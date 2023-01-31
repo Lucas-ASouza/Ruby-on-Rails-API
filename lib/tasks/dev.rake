@@ -1,6 +1,8 @@
 namespace :dev do
   desc "Developer Setup"
   task setup: :environment do
+    puts "Reseting Database"
+    %x(rails db:drop db:create db:migrate)
     puts "Populating Kinds..."
 
     kinds = %w(Friend Comercial Acquaintances)
@@ -31,7 +33,7 @@ namespace :dev do
 
     ######################## 
 
-    puts "Cadastrando os telefones..."
+    puts "Populating Phones.."
 
     Contact.all.each do |contact|
       Random.rand(5).times do |i|
@@ -40,7 +42,7 @@ namespace :dev do
         contact.save!
       end
     end
-    
-    puts "Telefones cadastrados com sucesso!"
+
+    puts "Phones Succesfully Populated!"
   end
 end
