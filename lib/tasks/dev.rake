@@ -40,7 +40,7 @@ namespace :dev do
         contact.save!
       end
     end
-
+    
     puts "Telefones cadastrados com sucesso!"
   end
 end
